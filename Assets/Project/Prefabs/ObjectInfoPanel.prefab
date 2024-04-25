@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   descriptionText: {fileID: 4335929590855292915}
+  title: {fileID: 4335929590855292915}
 --- !u!1 &3951373137171441937
 GameObject:
   m_ObjectHideFlags: 0

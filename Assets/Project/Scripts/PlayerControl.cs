@@ -15,7 +15,7 @@ public class PlayerControl : MonoBehaviour
         // Get input from the keyboard then call SetDirection
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
-
+        Debug.Log(moveDir);
         // Move object using Translate method according to moveDir
         transform.Translate(new Vector3(moveX, 0, moveY) * speed * Time.deltaTime);
     }

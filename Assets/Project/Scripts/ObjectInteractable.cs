@@ -10,7 +10,8 @@ public class ObjectInteractable : MonoBehaviour
     // Define events for onClick and onHover
     public delegate void InteractAction();
     public ObjectInfoPanel objectInfoPanel;
-    
+    public string title;
+    public string text;
 
     void OnMouseEnter()
     {
@@ -36,6 +37,8 @@ public class ObjectInteractable : MonoBehaviour
     void DefaultHoverAction()
     {
         objectInfoPanel.Show(true);
+        objectInfoPanel.SetTitle(title);
+        objectInfoPanel.SetDescription(text);
     }
 
     void DefaultExitAction()
@@ -59,5 +62,6 @@ public class ObjectInteractable : MonoBehaviour
             onExit += DefaultExitAction;
         }
         objectInfoPanel.Show(false);
+
     }
 }

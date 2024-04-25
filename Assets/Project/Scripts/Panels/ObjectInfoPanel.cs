@@ -9,7 +9,7 @@ public class ObjectInfoPanel : MonoBehaviour
     // TMP Text field for displaying the description
     public TMP_Text descriptionText;
     private float originalScale;
-
+    public TMP_Text title;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +28,12 @@ public class ObjectInfoPanel : MonoBehaviour
         else
             Debug.LogError("Description Text component not set on " + gameObject.name);
     }
+
+    public void SetTitle(string title)
+    {
+        this.title.text = title;
+    }
+        
 
     public void Show(bool value)
     {
