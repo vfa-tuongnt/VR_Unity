@@ -3,10 +3,14 @@ using UnityEngine.EventSystems; // Required for event handlers
 
 public class ObjectInteractable : MonoBehaviour
 {
-    // Define events for onClick and onHover
-    public delegate void InteractAction();
     public event InteractAction onClick;
     public event InteractAction onHover;
+    public event InteractAction onExit;
+
+    // Define events for onClick and onHover
+    public delegate void InteractAction();
+    public ObjectInfoPanel objectInfoPanel;
+    
 
     void OnMouseEnter()
     {
@@ -20,18 +24,23 @@ public class ObjectInteractable : MonoBehaviour
     }
     void OnMouseExit()
     {
-        
+        onExit?.Invoke();        
     }
 
     // Example methods for onClick and onHover actions
     void DefaultClickAction()
     {
-        Debug.Log("Performing default click action");
+        
     }
 
     void DefaultHoverAction()
     {
-        Debug.Log("Performing default hover action");
+        objectInfoPanel.Show(true);
+    }
+
+    void DefaultExitAction()
+    {
+        objectInfoPanel.Show(false);
     }
 
     void Start()
@@ -45,5 +54,10 @@ public class ObjectInteractable : MonoBehaviour
         {
             onHover += DefaultHoverAction;
         }
+        if(onExit == null)
+        {
+            onExit += DefaultExitAction;
+        }
+        objectInfoPanel.Show(false);
     }
 }
