@@ -1,25 +1,26 @@
 using UnityEngine;
 using UnityEngine.EventSystems; // Required for event handlers
 
-public class ObjectInteractable : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
+public class ObjectInteractable : MonoBehaviour
 {
     // Define events for onClick and onHover
     public delegate void InteractAction();
     public event InteractAction onClick;
     public event InteractAction onHover;
 
-    // Method called when the object is clicked
-    public void OnPointerClick(PointerEventData eventData)
+    void OnMouseEnter()
+    {
+        Debug.Log("Mouse Hover Over Object!");
+        onHover?.Invoke(); // Invoke the onHover event
+    }
+    void OnMouseDown()
     {
         Debug.Log("Object Clicked!");
         onClick?.Invoke(); // Invoke the onClick event
     }
-
-    // Method called when the mouse hovers over the object
-    public void OnPointerEnter(PointerEventData eventData)
+    void OnMouseExit()
     {
-        Debug.Log("Mouse Hover Over Object!");
-        onHover?.Invoke(); // Invoke the onHover event
+        
     }
 
     // Example methods for onClick and onHover actions

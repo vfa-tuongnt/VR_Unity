@@ -10,20 +10,13 @@ public class PlayerControl : MonoBehaviour
     // Direction of movement
     private Vector2 moveDir = Vector2.zero;
 
-    // Set the movement direction
-    public void SetDirection(Vector2 dir)
-    {
-        moveDir = dir;
-    }
-
     void Update()
     {
         // Get input from the keyboard then call SetDirection
         float moveX = Input.GetAxis("Horizontal");
         float moveY = Input.GetAxis("Vertical");
-        SetDirection(new Vector2(moveX, moveY));
 
         // Move object using Translate method according to moveDir
-        transform.Translate(moveDir * speed * Time.deltaTime);
+        transform.Translate(new Vector3(moveX, 0, moveY) * speed * Time.deltaTime);
     }
 }
