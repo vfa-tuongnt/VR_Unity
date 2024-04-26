@@ -3,6 +3,8 @@ using UnityEngine.EventSystems; // Required for event handlers
 
 public class ObjectInteractable : MonoBehaviour
 {
+    [SerializeField] private ObjectDataSO objectDataSO;
+    [SerializeField] private Outline outline;
     public event InteractAction onClick;
     public event InteractAction onHover;
     public event InteractAction onExit;
@@ -10,35 +12,33 @@ public class ObjectInteractable : MonoBehaviour
     // Define events for onClick and onHover
     public delegate void InteractAction();
     public ObjectInfoPanel objectInfoPanel;
-    public string title;
-    public string text;
 
     void OnMouseEnter()
     {
-        Debug.Log("Mouse Hover Over Object!");
+        outline.enabled = true;
         onHover?.Invoke(); // Invoke the onHover event
     }
     void OnMouseDown()
     {
-        Debug.Log("Object Clicked!");
         onClick?.Invoke(); // Invoke the onClick event
     }
     void OnMouseExit()
     {
+        outline.enabled = false;
         onExit?.Invoke();        
     }
 
     // Example methods for onClick and onHover actions
     void DefaultClickAction()
     {
-        
+        ChooseObjectManager.Instance.ChooseObject(this.objectDataSO);
     }
 
     void DefaultHoverAction()
     {
         objectInfoPanel.Show(true);
-        objectInfoPanel.SetTitle(title);
-        objectInfoPanel.SetDescription(text);
+        objectInfoPanel.SetTitle(objectDataSO.objectName);
+        objectInfoPanel.SetDescription(objectDataSO.objectDescription);
     }
 
     void DefaultExitAction()
@@ -62,6 +62,6 @@ public class ObjectInteractable : MonoBehaviour
             onExit += DefaultExitAction;
         }
         objectInfoPanel.Show(false);
-
+        outline.enabled = false;
     }
 }

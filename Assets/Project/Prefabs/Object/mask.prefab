@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2392582807667548365}
   - component: {fileID: 5710444515498248937}
   - component: {fileID: 1704197122013294897}
+  - component: {fileID: -5106808866710259335}
   m_Layer: 0
   m_Name: mask
   m_TagString: Untagged
@@ -121,9 +122,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7fd702a464e59a488bd46e67718dc3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectDataSO: {fileID: 11400000, guid: c5f8b546a80714762a706ab12b58c8c6, type: 2}
+  outline: {fileID: -5106808866710259335}
   objectInfoPanel: {fileID: 1932006241858666771}
-  title: Mask
-  text: Protect your nose
+--- !u!114 &-5106808866710259335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999554013898472443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 3
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &7503197860336758713
 PrefabInstance:
   m_ObjectHideFlags: 0

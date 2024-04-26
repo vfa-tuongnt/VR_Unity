@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5574732496434442353}
   - component: {fileID: 5036929639073784550}
   - component: {fileID: 4735319009976112499}
+  - component: {fileID: -1647729104321237137}
   m_Layer: 0
   m_Name: suit
   m_TagString: Untagged
@@ -121,9 +122,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7fd702a464e59a488bd46e67718dc3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectDataSO: {fileID: 11400000, guid: b655dbab3a6ec4ae88dfc531360f3a85, type: 2}
+  outline: {fileID: -1647729104321237137}
   objectInfoPanel: {fileID: 6677336885968325812}
-  title: Suit
-  text: Protect your up body
+--- !u!114 &-1647729104321237137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963246530571834936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 3
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &3334283607958381086
 PrefabInstance:
   m_ObjectHideFlags: 0
