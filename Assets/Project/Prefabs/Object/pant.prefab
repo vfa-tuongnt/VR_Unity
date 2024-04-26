@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1611917960612881265}
   - component: {fileID: 1181457669840610964}
   - component: {fileID: 1193674962096618381}
+  - component: {fileID: 2592145081959517963}
   m_Layer: 0
   m_Name: pant
   m_TagString: Untagged
@@ -27,14 +28,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138113567141573003}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: -0.6242353, y: 1.4970852, z: 2.749999}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7917330405691736171}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!33 &1611917960612881265
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -98,8 +99,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectInfoPanel: {fileID: 1104402633854314264}
-  title: 
-  text: 
+  title: Pant
+  text: Protect your legs
+--- !u!136 &2592145081959517963
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138113567141573003}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.004300085
+  m_Height: 0.0027567805
+  m_Direction: 1
+  m_Center: {x: 0.000037987833, y: 0.00016194876, z: 0.00071548356}
 --- !u!1001 &9060340419272985010
 PrefabInstance:
   m_ObjectHideFlags: 0
