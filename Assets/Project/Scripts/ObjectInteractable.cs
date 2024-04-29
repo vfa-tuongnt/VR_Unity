@@ -8,7 +8,7 @@ public class ObjectInteractable : MonoBehaviour
     public event InteractAction onClick;
     public event InteractAction onHover;
     public event InteractAction onExit;
-
+    
     // Define events for onClick and onHover
     public delegate void InteractAction();
     public ObjectInfoPanel objectInfoPanel;
