@@ -10,14 +10,17 @@ public class ObjectInfoPanel : MonoBehaviour
     public TMP_Text descriptionText;
     private float originalScale;
     public TMP_Text title;
+
+    public static ObjectInfoPanel Create()
+    {
+        return Instantiate(Resources.Load<ObjectInfoPanel>("Prefabs/ObjectInfoPanel"));
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         // Optionally initialize the descriptionText with some default text
-        if (descriptionText != null)
-            descriptionText.text = "Demo content.";
-        
-        originalScale = this.transform.localScale.x;
+        originalScale = 0.0025f;
     }
 
     // Function to set the text of the description field
@@ -35,16 +38,17 @@ public class ObjectInfoPanel : MonoBehaviour
     }
         
 
-    public void Show(bool value)
+    public void Show(bool value, Vector3 position)
     {
         if(value)
         {
+            this.transform.position = position;
             this.transform.localScale = Vector3.zero;
-            this.transform.DOScale(originalScale, 0.5f);
+            this.transform.DOScale(0.0025f, 0.5f);
         }
         else
         {
-            this.transform.DOScale(0f, 0.5f);
+            this.transform.DOScale(0f, 0.5f).OnComplete(() => {Destroy(this.gameObject); });
         }
     }
 }

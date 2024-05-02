@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using System;
+using UnityEngine.UI;
+
 public class ChooseObjectManager : MonoBehaviour
 {
+    public Sprite correctSprite, wrongSprite;
     private static ChooseObjectManager _instance;
     public static ChooseObjectManager Instance
     {
@@ -40,9 +43,8 @@ public class ChooseObjectManager : MonoBehaviour
     }
 
 
-    public void ChooseObject(ObjectDataSO objectDataSO)
+    public void ChooseObject(ObjectDataSO objectDataSO, Vector3 position)
     {
-
         if(objectDataSOList.Contains(objectDataSO))
         {
             chosenList.Add(objectDataSO);
@@ -53,11 +55,18 @@ public class ChooseObjectManager : MonoBehaviour
             {
                 find.SetText(objectDataSO.objectName, true);
             }
-
+            Transform checkUI = Instantiate(Resources.Load("Prefabs/CheckUI")).GetComponent<Transform>();
+            checkUI.GetComponentInChildren<Image>().sprite = correctSprite;
+            checkUI.position = position + new Vector3(0, 0.8f, -0.1f);
+            Destroy(checkUI.gameObject, 1f);
         }
         else
         {
             Debug.Log("Wrong! Please choose again!");
+            Transform checkUI = Instantiate(Resources.Load("Prefabs/CheckUI")).GetComponent<Transform>();
+            checkUI.GetComponentInChildren<Image>().sprite = wrongSprite;
+            checkUI.position = position + new Vector3(0, 0.8f, -0.1f);
+            Destroy(checkUI.gameObject, 1f);
         }
     }
 }

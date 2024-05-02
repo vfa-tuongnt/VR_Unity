@@ -8,10 +8,10 @@ public class ObjectInteractable : MonoBehaviour
     public event InteractAction onClick;
     public event InteractAction onHover;
     public event InteractAction onExit;
+    ObjectInfoPanel objectInfoPanel;
     
     // Define events for onClick and onHover
     public delegate void InteractAction();
-    public ObjectInfoPanel objectInfoPanel;
 
     void OnMouseEnter()
     {
@@ -31,19 +31,20 @@ public class ObjectInteractable : MonoBehaviour
     // Example methods for onClick and onHover actions
     void DefaultClickAction()
     {
-        ChooseObjectManager.Instance.ChooseObject(this.objectDataSO);
+        ChooseObjectManager.Instance.ChooseObject(this.objectDataSO, this.transform.position);
     }
 
     void DefaultHoverAction()
     {
-        objectInfoPanel.Show(true);
+        objectInfoPanel = ObjectInfoPanel.Create();
         objectInfoPanel.SetTitle(objectDataSO.objectName);
         objectInfoPanel.SetDescription(objectDataSO.objectDescription);
+        objectInfoPanel.Show(true, this.transform.position + new Vector3(0, 0.8f, 0));
     }
 
     void DefaultExitAction()
     {
-        objectInfoPanel.Show(false);
+        objectInfoPanel.Show(false, this.transform.position);
     }
 
     void Start()
@@ -61,7 +62,6 @@ public class ObjectInteractable : MonoBehaviour
         {
             onExit += DefaultExitAction;
         }
-        objectInfoPanel.Show(false);
         outline.enabled = false;
     }
 }
