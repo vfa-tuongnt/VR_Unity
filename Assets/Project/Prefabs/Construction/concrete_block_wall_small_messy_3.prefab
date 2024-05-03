@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5151820997373462298}
   - component: {fileID: 2419235944240183943}
   - component: {fileID: 4326775246975003493}
+  - component: {fileID: 504565192438103740}
   m_Layer: 0
   m_Name: concrete_block_wall_small_messy_3
   m_TagString: Untagged
@@ -83,6 +84,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &504565192438103740
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4407425237042118946}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 65.599976, y: 199.95831, z: 346.094}
+  m_Center: {x: 1426.2882, y: 99.71965, z: -992.1067}
 --- !u!1 &7780594466516768582
 GameObject:
   m_ObjectHideFlags: 0

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4323535699926856362}
   - component: {fileID: 6644790289766004546}
   - component: {fileID: 2490422645891857834}
+  - component: {fileID: 5982663273263536922}
   m_Layer: 0
   m_Name: concrete_block_pile_large
   m_TagString: Untagged
@@ -115,3 +116,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5982663273263536922
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5181532150082284913}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 154.39581, y: 106.4786, z: 153.1611}
+  m_Center: {x: 649.5156, y: 53.292202, z: 450.38187}

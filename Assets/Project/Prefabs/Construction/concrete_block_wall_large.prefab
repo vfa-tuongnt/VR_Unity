@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 2849353180584623633}
   - component: {fileID: 5069066472123536391}
   - component: {fileID: 2108520491019656504}
+  - component: {fileID: 7826956581361548425}
   m_Layer: 0
   m_Name: concrete_block_wall_large
   m_TagString: Untagged
@@ -115,3 +116,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7826956581361548425
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6103319485343801999}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 31.198975, y: 179.16681, z: 995.30273}
+  m_Center: {x: 1954.0115, y: 89.5587, z: 724.40094}

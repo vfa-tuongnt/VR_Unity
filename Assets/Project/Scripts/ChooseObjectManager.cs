@@ -24,8 +24,12 @@ public class ChooseObjectManager : MonoBehaviour
     public List<ObjectDataSO> chosenList = new List<ObjectDataSO>();
     
     public CheckElementUI checkElementUI;
+    public Button resetBtn;
     public Transform parent;
     List<CheckElementUI> checkElementUIList = new List<CheckElementUI>();
+    List<ObjectInteractable> objectInteractableList = new List<ObjectInteractable>();
+    private ObjectDataSO selectedObjectData;
+
     void Start()
     {
         checkElementUI.SetText("Choose the correct object", false);
@@ -40,25 +44,58 @@ public class ChooseObjectManager : MonoBehaviour
             checkElementUI.SetText(objectDataSO.objectName, false);
             checkElementUIList.Add(checkElementUI);
         }
+        resetBtn.onClick.AddListener(Reset);
     }
 
-
-    public void ChooseObject(ObjectDataSO objectDataSO, Vector3 position)
+    public void SetSelectedObject(ObjectDataSO objectDataSO)
     {
-        if(objectDataSOList.Contains(objectDataSO))
-        {
-            chosenList.Add(objectDataSO);
-            Debug.Log("Congratulations you you choose the correct object " + objectDataSO.objectName + "!");
+        this.selectedObjectData = objectDataSO;
+    }
+    public void ClearSelectedObject()
+    {
+        this.selectedObjectData = null;
+    }
+    public ObjectDataSO GetSelectedObject()
+    {
+        return this.selectedObjectData;
+    }
 
-            var find = checkElementUIList.Find(x => x.objectName == objectDataSO.objectName);
+    public void AddChosenObject(ObjectInteractable objectInteractable)
+    {
+        objectInteractableList.Add(objectInteractable);
+    }
+
+    public void Reset()
+    {
+        foreach(var objectInteractable in objectInteractableList)
+        {
+            objectInteractable.gameObject.SetActive(true);
+        }
+        foreach(var checkElementUI in checkElementUIList)
+        {
+            checkElementUI.SetChoose(false);
+        }
+        objectInteractableList.Clear();
+        chosenList.Clear();
+    }
+
+    public bool ChooseObject(Vector3 position)
+    {
+        if(objectDataSOList.Contains(selectedObjectData))
+        {
+            chosenList.Add(selectedObjectData);
+            Debug.Log("Congratulations you you choose the correct object " + selectedObjectData.objectName + "!");
+
+            var find = checkElementUIList.Find(x => x.objectName == selectedObjectData.objectName);
             if(find != null)
             {
-                find.SetText(objectDataSO.objectName, true);
+                find.SetText(selectedObjectData.objectName, true);
             }
             Transform checkUI = Instantiate(Resources.Load("Prefabs/CheckUI")).GetComponent<Transform>();
             checkUI.GetComponentInChildren<Image>().sprite = correctSprite;
             checkUI.position = position + new Vector3(0, 0.8f, -0.1f);
             Destroy(checkUI.gameObject, 1f);
+            return true;
         }
         else
         {
@@ -67,6 +104,7 @@ public class ChooseObjectManager : MonoBehaviour
             checkUI.GetComponentInChildren<Image>().sprite = wrongSprite;
             checkUI.position = position + new Vector3(0, 0.8f, -0.1f);
             Destroy(checkUI.gameObject, 1f);
+            return false;
         }
     }
 }
