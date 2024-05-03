@@ -43,7 +43,7 @@ public class ObjectInteractable : MonoBehaviour
 
     void DefaultHoverAction()
     {
-        if (ChooseObjectManager.Instance.GetSelectedObject() == this.objectDataSO) return;
+        if (ChooseObjectManager.Instance.GetSelectedObject() != null) return;
 
         if(objectInfoPanel != null) 
         {
@@ -59,7 +59,7 @@ public class ObjectInteractable : MonoBehaviour
 
     void DefaultExitAction()
     {
-        if (ChooseObjectManager.Instance.GetSelectedObject() != this.objectDataSO) return;
+        if (ChooseObjectManager.Instance.GetSelectedObject() == null || ChooseObjectManager.Instance.GetSelectedObject() != this.objectDataSO) return;
 
         outline.enabled = false;
         objectInfoPanel.Show(false, this.transform.position);
@@ -76,18 +76,20 @@ public class ObjectInteractable : MonoBehaviour
         onRightClickAction.action.performed += (action) => DefaultClickAction();
 
         // Subscribe some default methods to these actions
-        if (onClick == null)
-        {
-            onClick += DefaultClickAction;
-        }
-        if (onHover == null)
-        {
-            onHover += DefaultHoverAction;
-        }
-        if(onExit == null)
-        {
-            onExit += DefaultExitAction;
-        }
+        // if (onClick == null)
+        // {
+        //     onClick += DefaultClickAction;
+        // }
+        // if (onHover == null)
+        // {
+        //     onHover += DefaultHoverAction;
+        // }
+        // if(onExit == null)
+        // {
+        //     onExit += DefaultExitAction;
+        // }
         outline.enabled = false;
+
+        ChooseObjectManager.Instance.Subscribe(this);
     }
 }

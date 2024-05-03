@@ -27,7 +27,8 @@ public class ChooseObjectManager : MonoBehaviour
     public Button resetBtn;
     public Transform parent;
     List<CheckElementUI> checkElementUIList = new List<CheckElementUI>();
-    List<ObjectInteractable> objectInteractableList = new List<ObjectInteractable>();
+    List<ObjectInteractable> chosenObjectInteractableList = new List<ObjectInteractable>();
+    Dictionary<ObjectInteractable, Vector3> allObjectInteractableList = new Dictionary<ObjectInteractable, Vector3>();
     private ObjectDataSO selectedObjectData;
 
     void Start()
@@ -48,6 +49,11 @@ public class ChooseObjectManager : MonoBehaviour
         resetBtn.onClick.AddListener(Reset);
     }
 
+    public void Subscribe(ObjectInteractable objectInteractable)
+    {
+        allObjectInteractableList.Add(objectInteractable, objectInteractable.transform.position);
+    }
+
     public void SetSelectedObject(ObjectDataSO objectDataSO)
     {
         this.selectedObjectData = objectDataSO;
@@ -63,20 +69,21 @@ public class ChooseObjectManager : MonoBehaviour
 
     public void AddChosenObject(ObjectInteractable objectInteractable)
     {
-        objectInteractableList.Add(objectInteractable);
+        chosenObjectInteractableList.Add(objectInteractable);
     }
 
     public void Reset()
     {
-        foreach(var objectInteractable in objectInteractableList)
+        foreach(var objectInteractable in allObjectInteractableList)
         {
-            objectInteractable.gameObject.SetActive(true);
+            objectInteractable.Key.gameObject.SetActive(true);
+            objectInteractable.Key.transform.position = objectInteractable.Value;
         }
         foreach(var checkElementUI in checkElementUIList)
         {
             checkElementUI.SetChoose(false);
         }
-        objectInteractableList.Clear();
+        chosenObjectInteractableList.Clear();
         chosenList.Clear();
     }
 
