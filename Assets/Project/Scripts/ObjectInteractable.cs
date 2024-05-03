@@ -43,6 +43,8 @@ public class ObjectInteractable : MonoBehaviour
 
     void DefaultHoverAction()
     {
+        if (ChooseObjectManager.Instance.GetSelectedObject() == this.objectDataSO) return;
+
         if(objectInfoPanel != null) 
         {
             DefaultExitAction();
@@ -57,6 +59,8 @@ public class ObjectInteractable : MonoBehaviour
 
     void DefaultExitAction()
     {
+        if (ChooseObjectManager.Instance.GetSelectedObject() != this.objectDataSO) return;
+
         outline.enabled = false;
         objectInfoPanel.Show(false, this.transform.position);
         ChooseObjectManager.Instance.ClearSelectedObject();

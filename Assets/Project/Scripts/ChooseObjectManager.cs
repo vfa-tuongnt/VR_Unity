@@ -33,6 +33,7 @@ public class ChooseObjectManager : MonoBehaviour
     void Start()
     {
         checkElementUI.SetText("Choose the correct object", false);
+        checkElementUI.gameObject.SetActive(false);
         InitUI();
     }
 
