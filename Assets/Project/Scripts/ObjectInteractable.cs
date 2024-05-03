@@ -1,8 +1,10 @@
 using UnityEngine;
-using UnityEngine.EventSystems; // Required for event handlers
+using UnityEngine.EventSystems;
+using UnityEngine.XR.Interaction.Toolkit; // Required for event handlers
 
 public class ObjectInteractable : MonoBehaviour
 {
+    [SerializeField] private XRGrabInteractable grabInteractable;
     [SerializeField] private ObjectDataSO objectDataSO;
     [SerializeField] private Outline outline;
     public event InteractAction onClick;
@@ -49,6 +51,9 @@ public class ObjectInteractable : MonoBehaviour
 
     void Start()
     {
+        grabInteractable.hoverEntered.AddListener((call) => DefaultHoverAction());
+        grabInteractable.hoverExited.AddListener((call) => DefaultExitAction());
+        grabInteractable.selectEntered.AddListener((call) => DefaultClickAction());
         // Subscribe some default methods to these actions
         if (onClick == null)
         {
